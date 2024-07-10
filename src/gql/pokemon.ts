@@ -14,8 +14,22 @@ export const GET_TYPES = gql`
 `
 
 export const GET_POKEMONS = gql(`
-  query POKEMONS($offset: Int!, $limit: Int!, $typeName: String) {
-    pokemon_v2_pokemon(offset: $offset, limit: $limit, where: {pokemon_v2_pokemontypes: {pokemon_v2_type: {_or: {name: {_regex: $typeName}}}}}) {
+  query POKEMONS($offset: Int!, $limit: Int!, $name: String, $type: String, $gen: String) {
+    pokemon_v2_pokemon(
+      offset: $offset,
+      limit: $limit,
+      where: {
+        name: { _regex: $name },
+        pokemon_v2_pokemontypes: {
+          pokemon_v2_type: {
+            name: { _regex: $type },
+            pokemon_v2_generation: {
+              name: { _regex: $gen }
+            }
+          }
+        }
+      }
+    ) {
       id
       name
       order

@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import {PokemonsQuery} from '../generated/types'
+import {cn} from '../lib/utils'
 
 function convertIdToString(id: number) {
   // Convert the number to a string with base 10 (decimal)
@@ -18,13 +18,13 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
           name: type.pokemon_v2_type?.name,
           class: `bg-type-${type.pokemon_v2_type?.name}`,
         }))
-        console.log('pokemonTypes', pokemonTypes)
+
         return (
           <div
             key={pokemon.id}
-            className={clsx(
-              'relative border border-white/50 rounded-lg px-3 p-4 space-y-2 hover:outline hover:outline-2 hover:outline-white transition-all',
-              // pokemonTypes[0].class,
+            className={cn(
+              'relative border border-white/50 rounded-lg px-3 p-4 space-y-2 hover:ring hover:ring-ring transition-all',
+              pokemonTypes[0].class,
             )}
           >
             <h2 className="capitalize font-bold text-lg text-white">
@@ -55,7 +55,7 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
               {pokemonTypes.map(type => (
                 <div
                   key={type.name}
-                  className={clsx(
+                  className={cn(
                     type.class,
                     'inline-block mr-1 w-[20px] h-[20px] rounded-full',
                   )}
