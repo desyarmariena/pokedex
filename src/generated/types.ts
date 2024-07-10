@@ -58749,6 +58749,11 @@ export type Subscription_RootPokemon_V2_Versionname_StreamArgs = {
   where?: InputMaybe<Pokemon_V2_Versionname_Bool_Exp>;
 };
 
+export type FiltersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FiltersQuery = { __typename?: 'query_root', types: Array<{ __typename?: 'pokemon_v2_type', id: number, name: string }>, generations: Array<{ __typename?: 'pokemon_v2_generation', id: number, name: string }> };
+
 export type PokemonsQueryVariables = Exact<{
   offset: Scalars['Int']['input'];
   limit: Scalars['Int']['input'];
