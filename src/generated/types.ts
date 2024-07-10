@@ -58752,7 +58752,8 @@ export type Subscription_RootPokemon_V2_Versionname_StreamArgs = {
 export type PokemonsQueryVariables = Exact<{
   offset: Scalars['Int']['input'];
   limit: Scalars['Int']['input'];
+  typeName?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type PokemonsQuery = { __typename?: 'query_root', pokemon_v2_pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', name: string, order?: number | null, pokemon_species_id?: number | null, id: number, base_experience?: number | null, pokemon_v2_pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }> }> };
+export type PokemonsQuery = { __typename?: 'query_root', pokemon_v2_pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string, order?: number | null, base_experience?: number | null, pokemon_v2_pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, pokemon_v2_pokemontypes: Array<{ __typename?: 'pokemon_v2_pokemontype', pokemon_v2_type?: { __typename?: 'pokemon_v2_type', id: number, name: string } | null }> }> };
