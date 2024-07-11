@@ -1,5 +1,6 @@
 import {PokemonsQuery} from '../generated/types'
 import {cn, convertIdToString} from '../lib/utils'
+import {Link} from 'react-router-dom'
 
 export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
   if (!pokemons) return null
@@ -13,8 +14,9 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
         }))
 
         return (
-          <div
+          <Link
             key={pokemon.id}
+            to={`/pokemon/${pokemon.id}`}
             className={cn(
               'relative border border-white/50 rounded-lg px-3 p-4 space-y-2 hover:ring hover:ring-ring transition-all',
               pokemonTypes[0].class,
@@ -55,7 +57,7 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
                 ></div>
               ))}
             </div> */}
-          </div>
+          </Link>
         )
       })}
     </div>

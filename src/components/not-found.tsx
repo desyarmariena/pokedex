@@ -1,5 +1,5 @@
-import {FishOff} from 'lucide-react'
 import React from 'react'
+import {FishOff} from 'lucide-react'
 
 export default function NotFound({children}: {children: React.ReactNode}) {
   return (
