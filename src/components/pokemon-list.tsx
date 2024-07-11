@@ -1,18 +1,11 @@
 import {PokemonsQuery} from '../generated/types'
-import {cn} from '../lib/utils'
-
-function convertIdToString(id: number) {
-  // Convert the number to a string with base 10 (decimal)
-  const idString = id.toString(5)
-  const paddedString = idString.padStart(5, '0')
-  return `#${paddedString}`
-}
+import {cn, convertIdToString} from '../lib/utils'
 
 export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
   if (!pokemons) return null
 
   return (
-    <div className="grid grid-cols-3 gap-4 text-gray-400">
+    <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-4 text-gray-400">
       {pokemons.pokemon_v2_pokemon.map(pokemon => {
         const pokemonTypes = pokemon.pokemon_v2_pokemontypes.map(type => ({
           name: type.pokemon_v2_type?.name,
@@ -51,7 +44,7 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
                 className="absolute w-[100px] top-1 right-1"
               />
             </picture>
-            <div>
+            {/* <div>
               {pokemonTypes.map(type => (
                 <div
                   key={type.name}
@@ -61,7 +54,7 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
                   )}
                 ></div>
               ))}
-            </div>
+            </div> */}
           </div>
         )
       })}

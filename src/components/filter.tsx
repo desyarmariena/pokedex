@@ -20,7 +20,7 @@ type FilterProps = {
   setFilter: React.Dispatch<React.SetStateAction<Filter>>
 }
 
-export default function FilterPokemon({setFilter}: FilterProps) {
+export default function FilterPokemon({filter, setFilter}: FilterProps) {
   const {data} = useQuery<FiltersQuery>(GET_TYPES)
 
   const onChangeHandler = (key: string, value: string | number) => {
@@ -28,15 +28,20 @@ export default function FilterPokemon({setFilter}: FilterProps) {
   }
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex flex-wrap gap-4 mb-4">
       <Input
         placeholder="Search Pokemon"
+        value={filter.name}
         onChange={e => {
           onChangeHandler('name', e.target.value)
         }}
+        className="flex-2 sm:flex-1"
       />
-      <Select onValueChange={value => onChangeHandler('type', value)}>
-        <SelectTrigger className="w-[180px] text-muted-foreground capitalize">
+      <Select
+        value={filter.type}
+        onValueChange={value => onChangeHandler('type', value)}
+      >
+        <SelectTrigger className="min-w-40 sm:max-w-40 text-muted-foreground capitalize flex-1 ">
           <SelectValue placeholder="By Type" />
         </SelectTrigger>
         <SelectContent>
@@ -54,8 +59,11 @@ export default function FilterPokemon({setFilter}: FilterProps) {
           })}
         </SelectContent>
       </Select>
-      <Select onValueChange={value => onChangeHandler('gen', value)}>
-        <SelectTrigger className="w-[250px] text-muted-foreground capitalize">
+      <Select
+        value={filter.gen}
+        onValueChange={value => onChangeHandler('gen', value)}
+      >
+        <SelectTrigger className="sm:max-w-44 text-muted-foreground capitalize flex-1">
           <SelectValue placeholder="By Generation" />
         </SelectTrigger>
         <SelectContent>
