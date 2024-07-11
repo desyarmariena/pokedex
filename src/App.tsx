@@ -50,8 +50,8 @@ function App() {
   }
 
   return (
-    <main className="w-full h-full">
-      <section className="px-8 py-4">
+    <main className="w-full h-full py-6 px-6 lg:pt-12 lg:px-12">
+      <section>
         <Filter filter={filter} setFilter={setFilter} />
         <Loading loading={loading} />
         {!loading && data && data?.pokemon_v2_pokemon.length === 0 ? (

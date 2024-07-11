@@ -1,12 +1,12 @@
+import {Link} from 'react-router-dom'
 import {PokemonsQuery} from '../generated/types'
 import {cn, convertIdToString} from '../lib/utils'
-import {Link} from 'react-router-dom'
 
 export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
   if (!pokemons) return null
 
   return (
-    <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-4 text-gray-400">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-gray-400">
       {pokemons.pokemon_v2_pokemon.map(pokemon => {
         const pokemonTypes = pokemon.pokemon_v2_pokemontypes.map(type => ({
           name: type.pokemon_v2_type?.name,

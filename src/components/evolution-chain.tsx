@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 type Evolution = {
   id: number
   name: string
@@ -22,7 +24,8 @@ export default function EvolutionChain({species}: {species: Evolution[]}) {
           .sort((a, b) => (a.order ?? 1) - (b.order ?? 1))
           .map(species => {
             return (
-              <div
+              <Link
+                to={`/pokemon/${species.id}`}
                 key={species.id}
                 className="flex justify-center gap-2 py-2 px-4 border border-gray-500 rounded "
               >
@@ -35,7 +38,7 @@ export default function EvolutionChain({species}: {species: Evolution[]}) {
                     ].front_default
                   }
                 />
-              </div>
+              </Link>
             )
           })}
       </div>

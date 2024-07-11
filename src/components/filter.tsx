@@ -28,7 +28,7 @@ export default function FilterPokemon({filter, setFilter}: FilterProps) {
   }
 
   return (
-    <div className="flex flex-wrap gap-4 mb-4">
+    <div className="flex flex-wrap gap-4 mb-8">
       <Input
         placeholder="Search Pokemon"
         value={filter.name}
