@@ -19,7 +19,7 @@ export default function PokemonList({pokemons}: {pokemons?: PokemonsQuery}) {
             to={`/pokemon/${pokemon.id}`}
             className={cn(
               'relative border border-white/50 rounded-lg px-3 p-4 space-y-2 hover:ring hover:ring-ring transition-all',
-              pokemonTypes[0].class,
+              // pokemonTypes[0].class,
             )}
           >
             <h2 className="capitalize font-bold text-lg text-white">
