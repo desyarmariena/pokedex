@@ -11,3 +11,11 @@ export function convertIdToString(id: number) {
   const paddedString = idString.padStart(5, '0')
   return `#${paddedString}`
 }
+
+export function capitalizeWords(str?: string) {
+  if (!str) return ''
+  return str
+    .split(/\s|-+/) // Split on spaces or hyphens
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize first letter and join
+    .join(' ') // Join words back with spaces
+}

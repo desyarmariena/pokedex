@@ -67,4 +67,13 @@
   body {
     @apply bg-background text-foreground;
   }
+  table,
+  th,
+  td {
+    @apply border border-gray-700;
+  }
+  th,
+  td {
+    @apply p-2;
+  }
 }

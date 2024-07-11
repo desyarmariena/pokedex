@@ -58757,8 +58757,17 @@ export type FiltersQuery = { __typename?: 'query_root', types: Array<{ __typenam
 export type PokemonsQueryVariables = Exact<{
   offset: Scalars['Int']['input'];
   limit: Scalars['Int']['input'];
-  typeName?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  gen?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
 export type PokemonsQuery = { __typename?: 'query_root', pokemon_v2_pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string, order?: number | null, base_experience?: number | null, pokemon_v2_pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, pokemon_v2_pokemontypes: Array<{ __typename?: 'pokemon_v2_pokemontype', pokemon_v2_type?: { __typename?: 'pokemon_v2_type', id: number, name: string } | null }> }> };
+
+export type PokemonQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+
+export type PokemonQuery = { __typename?: 'query_root', pokemon: Array<{ __typename?: 'pokemon_v2_pokemon', id: number, name: string, base_experience?: number | null, height?: number | null, pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, types: Array<{ __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', name: string, generation?: { __typename?: 'pokemon_v2_generation', name: string } | null } | null }>, abilities: Array<{ __typename?: 'pokemon_v2_pokemonability', ability?: { __typename?: 'pokemon_v2_ability', id: number, name: string, effects: Array<{ __typename?: 'pokemon_v2_abilityeffecttext', effect: string }> } | null }>, moves: Array<{ __typename?: 'pokemon_v2_pokemonmove', id: number, level: number, pokemon_id?: number | null, move?: { __typename?: 'pokemon_v2_move', name: string, id: number, accuracy?: number | null, power?: number | null, type?: { __typename?: 'pokemon_v2_type', name: string } | null } | null }>, stats: Array<{ __typename?: 'pokemon_v2_pokemonstat', base_stat: number, effort: number, stat?: { __typename?: 'pokemon_v2_stat', name: string, game_index: number, id: number, is_battle_only: boolean, move_damage_class_id?: number | null, characteristics: Array<{ __typename?: 'pokemon_v2_characteristic', characteristic: Array<{ __typename?: 'pokemon_v2_characteristicdescription', description: string }> }> } | null }>, specy?: { __typename?: 'pokemon_v2_pokemonspecies', base_happiness?: number | null, capture_rate?: number | null, gender_rate?: number | null, name: string, order?: number | null, pokemon_habitat_id?: number | null, evolutionchain?: { __typename?: 'pokemon_v2_evolutionchain', id: number, species: Array<{ __typename?: 'pokemon_v2_pokemonspecies', id: number, name: string, order?: number | null, pokemons: Array<{ __typename?: 'pokemon_v2_pokemon', pokemonsprites: Array<{ __typename?: 'pokemon_v2_pokemonsprites', sprites: any }>, types: Array<{ __typename?: 'pokemon_v2_pokemontype', type?: { __typename?: 'pokemon_v2_type', name: string, generation?: { __typename?: 'pokemon_v2_generation', name: string } | null } | null }> }> }> } | null, habitat?: { __typename?: 'pokemon_v2_pokemonhabitat', id: number, name: string } | null } | null }> };
