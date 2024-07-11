@@ -17,7 +17,8 @@ const INIT_FILTER = {
 function App() {
   const [filter, setFilter] = useState(INIT_FILTER)
   const debouncedFilter = useDebounce(filter, 500)
-  const {loading, data} = useQuery<PokemonsQuery>(GET_POKEMONS, {
+  const [hasMoreData, setHasMoreData] = useState(true)
+  const {loading, data, fetchMore} = useQuery<PokemonsQuery>(GET_POKEMONS, {
     variables: {
       offset: 0,
       limit: 24,
@@ -26,6 +27,27 @@ function App() {
       gen: filter.gen,
     },
   })
+
+  const onFetchMore = () => {
+    if (hasMoreData) {
+      fetchMore({
+        variables: {
+          offset: data?.pokemon_v2_pokemon.length,
+        },
+        updateQuery: (previousResult, {fetchMoreResult}) => {
+          if (fetchMoreResult.pokemon_v2_pokemon.length < 24) {
+            setHasMoreData(false)
+          }
+          return {
+            pokemon_v2_pokemon: [
+              ...previousResult.pokemon_v2_pokemon,
+              ...fetchMoreResult.pokemon_v2_pokemon,
+            ],
+          }
+        },
+      })
+    }
+  }
 
   return (
     <main className="w-full h-full">
@@ -44,6 +66,15 @@ function App() {
           </NotFound>
         ) : null}
         <PokemonList pokemons={data} />
+        {data?.pokemon_v2_pokemon &&
+        data?.pokemon_v2_pokemon.length >= 24 &&
+        hasMoreData ? (
+          <div className="my-4 flex justify-center">
+            <button type="button" onClick={onFetchMore}>
+              Load more
+            </button>
+          </div>
+        ) : null}
       </section>
     </main>
   )
