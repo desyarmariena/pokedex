@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function convertIdToString(id: number) {
   // Convert the number to a string with base 10 (decimal)
-  const idString = id.toString(5)
+  const idString = id.toString(10)
   const paddedString = idString.padStart(5, '0')
   return `#${paddedString}`
 }
